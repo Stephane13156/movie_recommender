@@ -56,7 +56,7 @@ def recommend_nmf(query, model, k=10):
     recommended = ranked[:k]
     return recommended
 
-def recommend_neighborhood(query, model, ratings, k=10):
+def recommend_neighborhood(query, model, k=10):
     """
     Filters and recommends the top k movies for any given input query based on a trained nearest neighbors model. 
     Returns a list of k movie ids.
