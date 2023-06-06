@@ -186,6 +186,8 @@ else:
         else:
             recommendation = recommenders.recommend_neighborhood(user_query, DISTANCE_MODEL, k=10)
 
-        st.write(recommendation)
+        st.write(
+            HTML(recommendation.to_html(escape=False))
+            )
     
     
