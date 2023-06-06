@@ -185,7 +185,7 @@ else:
             recommendation = recommenders.recommend_nmf(user_query, NMF_MODEL, k=10)
         else:
             recommendation = recommenders.recommend_neighborhood(user_query, DISTANCE_MODEL, k=10)
-
+        recommendation = pd.DataFrame(data=recommendation)
         st.write(
             HTML(recommendation.to_html(escape=False))
             )
