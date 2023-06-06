@@ -54,6 +54,11 @@ def recommend_nmf(query, model, k=10):
     ranked =  R_hat_new_filtered.T.sort_values(by=["new_user"],ascending=False).index.tolist()
     
     recommended = ranked[:k]
+    recommended = pd.DataFrame(data=recommended,columns=['title'])
+    recommended.rename(
+    index=lambda x: x+1,
+    inplace=True
+    )
     return recommended
 
 def recommend_neighborhood(query, model, k=10):
@@ -97,7 +102,7 @@ def recommend_neighborhood(query, model, k=10):
     
     # return the top-k highst rated movie ids or titles
     recommended = df_score_ranked[1:k+1]
-    recommended = pd.DataFrame(data=recommended,columns='title')
+    recommended = pd.DataFrame(data=recommended,columns=['title'])
     recommended.rename(
     index=lambda x: x+1,
     inplace=True
