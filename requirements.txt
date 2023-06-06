@@ -1,6 +1,6 @@
 numpy
 pandas
 ipython
-sklearn
+scikit-learn
 streamlit
 streamlit-aggrid
