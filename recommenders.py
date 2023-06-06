@@ -97,7 +97,7 @@ def recommend_neighborhood(query, model, k=10):
     
     # return the top-k highst rated movie ids or titles
     recommended = df_score_ranked[1:k+1]
-    recommendation = pd.DataFrame(data=recommendation,columns='title')
+    recommended = pd.DataFrame(data=recommended,columns='title')
     recommended.rename(
     index=lambda x: x+1,
     inplace=True
