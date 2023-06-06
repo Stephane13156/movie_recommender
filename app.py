@@ -1,14 +1,16 @@
 # import std libraries
-import numpy as np
+#import numpy as np
 import pandas as pd
-import time
+#import time
 
 from IPython.display import HTML
 import pickle
 import json
 
 import streamlit as st
-from st_aggrid import AgGrid
+#from st_aggrid import AgGrid
+
+import recommenders
 
 BEST_MOVIES = pd.read_csv("best_movies.csv")
 BEST_MOVIES.rename(
@@ -146,14 +148,16 @@ elif page == "rate some movies":
     
     user_query = dict(zip(query_movies,query_ratings))
 
+    final_query = {}
+    for k, v in user_query.items():
+        if k != "---":
+            final_query[k] = v
+
     # get user query
     st.markdown("###")
-    user_query_button = st.button(label="save user query") 
+    user_query_button = st.button(label="save user query")
     if user_query_button:
-        json.dump(
-            user_query,
-            open("user_query.json",'w')
-            )
+        json.dump(final_query, open("user_query.json", "w"))
         st.write("")
         st.write("user query saved successfully")
 
@@ -175,5 +179,13 @@ else:
 
     #load user query
     user_query = json.load(open("user_query.json"))
+
+    if recommend_button:
+        if recommender == "NMF Recommender":
+            recommendation = recommenders.recommend_nmf(user_query, k=10)
+        else:
+            recommendation = recommenders.recommend_neighborhood(user_query, k=10)
+
+        st.write(recommendation)
     
     
