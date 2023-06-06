@@ -96,7 +96,7 @@ def recommend_neighborhood(query, model, k=10):
     df_score_ranked = df_score.sort_values(ascending=False).index.tolist()
     
     # return the top-k highst rated movie ids or titles
-    recommended = df_score_ranked[:k]
+    recommended = df_score_ranked[1:k]
     
     return recommended
 

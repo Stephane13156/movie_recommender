@@ -187,7 +187,7 @@ else:
             recommendation = recommenders.recommend_neighborhood(user_query, DISTANCE_MODEL, k=10)
         recommendation = pd.DataFrame(data=recommendation)
         st.write(
-            HTML(recommendation.to_html(escape=False))
+            HTML(recommendation.head(10).to_html(escape=False))
             )
     
     
