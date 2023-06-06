@@ -62,6 +62,7 @@ def recommend_neighborhood(query, model, ratings, k=10):
     Returns a list of k movie ids.
     """
     df_movies = pd.read_csv('./data/movies_mod.csv',sep=',')
+    R = pd.read_csv('./data/R_Matrix.csv',sep=',')
 
     # 1. candiate generation   
     # construct a user vector
