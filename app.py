@@ -182,9 +182,9 @@ else:
 
     if recommend_button:
         if recommender == "NMF Recommender":
-            recommendation = recommenders.recommend_nmf(user_query, k=10)
+            recommendation = recommenders.recommend_nmf(user_query, NMF_MODEL, k=10)
         else:
-            recommendation = recommenders.recommend_neighborhood(user_query, k=10)
+            recommendation = recommenders.recommend_neighborhood(user_query, DISTANCE_MODEL, k=10)
 
         st.write(recommendation)
     
